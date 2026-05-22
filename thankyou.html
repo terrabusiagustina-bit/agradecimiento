@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Gracias por Votar! - Out of the Bounds</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        /* Paleta de colores idéntica */
+        :root {
+            --bg-dark: #120c24; 
+            --bg-panel: rgba(34, 24, 66, 0.85); 
+            --cyan-neon: #00f0ff; 
+            --purple-light: #5e469c; 
+            --pink-neon: #ff007f; 
+            --text-light: #e0e5ec;
+            --text-muted: #8d85c4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Share Tech Mono', monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* CANVAS DE CODIGO DE FONDO */
+        #code-matrix {
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            z-index: -2;
+            opacity: 0.2; 
+        }
+
+        /* EFECTO GLITCH EN EL FONDO */
+        .glitch-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .glitch-bg::before, .glitch-bg::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                linear-gradient(transparent 0%, rgba(0, 240, 255, 0.05) 2%, transparent 3%),
+                linear-gradient(transparent 0%, rgba(255, 0, 127, 0.05) 2%, transparent 3%);
+            background-size: 100% 150px;
+        }
+
+        .glitch-bg::before { animation: bg-glitch-anim 4s infinite linear; }
+        .glitch-bg::after { animation: bg-glitch-anim 6s infinite reverse; opacity: 0.7; }
+
+        @keyframes bg-glitch-anim {
+            0% { transform: translateY(0); opacity: 0.5; }
+            50% { transform: translateY(100px); opacity: 0.8; }
+            100% { transform: translateY(150px); opacity: 0.5; }
+        }
+
+        h1, h2, h3, .btn {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        /* LOGO */
+        .main-logo {
+            max-width: 250px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.4));
+        }
+
+        /* AGRADECIMIENTO TITULO */
+        .thank-you-title {
+            font-size: 3rem;
+            color: var(--cyan-neon);
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            animation: glitch-text 3s infinite;
+        }
+
+        @keyframes glitch-text {
+            0% { text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); }
+            49% { text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); transform: skew(0deg); }
+            50% { text-shadow: -3px 0 var(--pink-neon), 3px 0 var(--cyan-neon); transform: skew(5deg); }
+            52% { text-shadow: 3px 0 var(--pink-neon), -3px 0 var(--cyan-neon); transform: skew(-5deg); }
+            55% { text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); transform: skew(0deg); }
+            100% { text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); }
+        }
+
+        /* PANEL CENTRAL */
+        .content-box {
+            background: var(--bg-panel);
+            border: 2px solid var(--purple-light);
+            border-top: 4px solid var(--pink-neon);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            margin-bottom: 3rem;
+        }
+
+        .highlight-text {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-text dashed {
+            color: var(--cyan-neon);
+        }
+
+        /* CHISTE / ALERTA GLITCH */
+        .glitch-joke-box {
+            background: rgba(255, 0, 127, 0.1);
+            border: 1px dashed var(--pink-neon);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .glitch-joke-box h3 {
+            color: var(--pink-neon);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .glitch-joke-box p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* BOTON VOLVER */
+        .btn-volver {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            background: transparent;
+            border: 2px solid var(--cyan-neon);
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-volver:hover {
+            background: var(--cyan-neon);
+            color: var(--bg-dark);
+            box-shadow: 0 0 25px var(--cyan-neon);
+            transform: translateY(-3px);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(10, 6, 20, 0.95);
+            border-top: 1px solid var(--purple-light);
+            width: 100%;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--cyan-neon);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-shadow: 0 0 5px var(--cyan-neon);
+        }
+
+        @media (max-width: 768px) {
+            .thank-you-title { font-size: 2rem; }
+            .content-box { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="code-matrix"></canvas>
+
+    <div class="glitch-bg"></div>
+    <div class="scanlines"></div>
+
+    <div class="container">
+        
+        <img src="logofinal.jpg" alt="Out of the Bounds Logo" class="main-logo">
+
+        <div class="content-box">
+            <h1 class="thank-you-title">¡MUCHAS GRACIAS POR VOTAR!</h1>
+            
+            <p class="highlight-text">
+                Tu respuesta ha desestabilizado el sistema con éxito. Gracias a tu apoyo, <span style="color: var(--cyan-neon); font-weight: bold;">estoy muchísimo más cerca de desarrollar mi videojuego</span> y hacer que este colapso sea total.
+            </p>
+
+            <div class="glitch-joke-box">
+                <h3>[ SYSTEM_ALERT: ERROR_404_ORDER_NOT_FOUND ]</h3>
+                <p>
+                    "El sistema intentó parchar tu voto para mantener el ciclo... pero nuestro Glitch se lo comió como código basura. ¡No hay 'Fix' que nos detenga ahora!"
+                </p>
+            </div>
+
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">
+                Cada voto rompe una regla del entorno. El desarrollo de <strong>Out of the Bounds</strong> sigue su curso.
+            </p>
+
+            <a href="index.html" class="btn-volver">VOLVER AL INICIO</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Out of the Bounds © 2026 | Desarrollado por <a href="https://terrabusiagustina-bit.github.io/Portfolio/" target="_blank">Agustina Terrabusi</a></p>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('code-matrix');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const chars = '010101110010A B C D E F'.split('');
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for(let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(18, 12, 36, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00f0ff';
+            ctx.font = fontSize + 'px "Share Tech Mono"';
+
+            for(let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 50);
+    </script>
+
+</body>
+</html>
