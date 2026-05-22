@@ -95,9 +95,9 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 750px;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            padding: 2rem 1.5rem;
             position: relative;
             z-index: 10;
             text-align: center;
@@ -105,19 +105,19 @@
 
         /* LOGO */
         .main-logo {
-            max-width: 250px;
+            max-width: 180px;
             width: 100%;
             height: auto;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.4));
         }
 
         /* AGRADECIMIENTO TITULO */
         .thank-you-title {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--cyan-neon);
             text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             letter-spacing: 2px;
             animation: glitch-text 3s infinite;
         }
@@ -125,8 +125,8 @@
         @keyframes glitch-text {
             0% { text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); }
             49% { text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); transform: skew(0deg); }
-            50% { text-shadow: -3px 0 var(--pink-neon), 3px 0 var(--cyan-neon); transform: skew(5deg); }
-            52% { text-shadow: 3px 0 var(--pink-neon), -3px 0 var(--cyan-neon); transform: skew(-5deg); }
+            50% { text-shadow: -3px 0 var(--pink-neon), 3px 0 var(--cyan-neon); transform: skew(4deg); }
+            52% { text-shadow: 3px 0 var(--pink-neon), -3px 0 var(--cyan-neon); transform: skew(-4deg); }
             55% { text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); transform: skew(0deg); }
             100% { text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); }
         }
@@ -136,51 +136,98 @@
             background: var(--bg-panel);
             border: 2px solid var(--purple-light);
             border-top: 4px solid var(--pink-neon);
-            padding: 3rem 2rem;
+            padding: 2rem 1.5rem;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.7);
             backdrop-filter: blur(5px);
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .highlight-text {
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             color: #fff;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .highlight-text dashed {
-            color: var(--cyan-neon);
-        }
-
-        /* CHISTE / ALERTA GLITCH */
+        /* CHISTE CORTITO */
         .glitch-joke-box {
-            background: rgba(255, 0, 127, 0.1);
+            background: rgba(255, 0, 127, 0.08);
             border: 1px dashed var(--pink-neon);
-            padding: 1.5rem;
+            padding: 0.8rem;
             border-radius: 4px;
-            margin: 2rem 0;
-            position: relative;
-        }
-
-        .glitch-joke-box h3 {
-            color: var(--pink-neon);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 1px;
+            margin: 1rem 0 2rem 0;
         }
 
         .glitch-joke-box p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-light);
             font-style: italic;
+        }
+
+        /* SECCIÓN VOTA COMPAÑEROS */
+        .friends-section {
+            border-top: 1px dashed rgba(94, 70, 156, 0.6);
+            padding-top: 1.5rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .friends-title {
+            font-size: 1.1rem;
+            color: var(--pink-neon);
+            margin-bottom: 1.2rem;
+            letter-spacing: 1.5px;
+        }
+
+        .friends-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .friend-card {
+            background: rgba(18, 12, 36, 0.7);
+            border: 1px solid var(--purple-light);
+            padding: 1rem 0.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .friend-card:hover {
+            transform: scale(1.05);
+            border-color: var(--cyan-neon);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+
+        .friend-img {
+            width: 100%;
+            height: 70px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+            transition: filter 0.3s ease;
+        }
+
+        .friend-card:hover .friend-img {
+            filter: drop-shadow(0 0 5px var(--cyan-neon));
+        }
+
+        .friend-name {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
         }
 
         /* BOTON VOLVER */
         .btn-volver {
             display: inline-block;
-            padding: 1rem 2.5rem;
-            font-size: 1.2rem;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #fff;
             background: transparent;
@@ -196,13 +243,13 @@
             background: var(--cyan-neon);
             color: var(--bg-dark);
             box-shadow: 0 0 25px var(--cyan-neon);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
 
         /* FOOTER */
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem;
             background: rgba(10, 6, 20, 0.95);
             border-top: 1px solid var(--purple-light);
             width: 100%;
@@ -210,7 +257,7 @@
 
         footer p {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         footer a {
@@ -218,13 +265,9 @@
             text-decoration: none;
         }
 
-        footer a:hover {
-            text-shadow: 0 0 5px var(--cyan-neon);
-        }
-
         @media (max-width: 768px) {
-            .thank-you-title { font-size: 2rem; }
-            .content-box { padding: 2rem 1rem; }
+            .thank-you-title { font-size: 1.8rem; }
+            .content-box { padding: 1.5rem 1rem; }
         }
     </style>
 </head>
@@ -243,19 +286,34 @@
             <h1 class="thank-you-title">¡MUCHAS GRACIAS POR VOTAR!</h1>
             
             <p class="highlight-text">
-                Tu respuesta ha desestabilizado el sistema con éxito. Gracias a tu apoyo, <span style="color: var(--cyan-neon); font-weight: bold;">estoy muchísimo más cerca de desarrollar mi videojuego</span> y hacer que este colapso sea total.
+                Tu respuesta desestabilizó el entorno. Gracias a vos, <span style="color: var(--cyan-neon); font-weight: bold;">estoy más cerca de desarrollar mi videojuego</span>.
             </p>
 
             <div class="glitch-joke-box">
-                <h3>[ SYSTEM_ALERT: ERROR_404_ORDER_NOT_FOUND ]</h3>
-                <p>
-                    "El sistema intentó parchar tu voto para mantener el ciclo... pero nuestro Glitch se lo comió como código basura. ¡No hay 'Fix' que nos detenga ahora!"
-                </p>
+                <p>"[ERROR_404]: Tu voto rompió el bucle. El Glitch se comió el parche de seguridad."</p>
             </div>
 
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">
-                Cada voto rompe una regla del entorno. El desarrollo de <strong>Out of the Bounds</strong> sigue su curso.
-            </p>
+            <div class="friends-section">
+                <h2 class="friends-title">[ APOYA OTROS SISTEMAS ALIADOS ]</h2>
+                <div class="friends-grid">
+                    
+                    <a href="#LINK_AMIGO_1" target="_blank" class="friend-card">
+                        <img src="logo_amigo1.png" alt="Juego Compañero 1" class="friend-img" onerror="this.style.display='none'; this.parentNode.innerHTML+='<div style=\"color:var(--cyan-neon); font-size:0.75rem; margin-bottom:0.5rem;\">&lt;Logo Juego 1&gt;</div>'">
+                        <span class="friend-name">JUEGO 1</span>
+                    </a>
+
+                    <a href="#LINK_AMIGO_2" target="_blank" class="friend-card">
+                        <img src="logo_amigo2.png" alt="Juego Compañero 2" class="friend-img" onerror="this.style.display='none'; this.parentNode.innerHTML+='<div style=\"color:var(--cyan-neon); font-size:0.75rem; margin-bottom:0.5rem;\">&lt;Logo Juego 2&gt;</div>'">
+                        <span class="friend-name">JUEGO 2</span>
+                    </a>
+
+                    <a href="#LINK_AMIGO_3" target="_blank" class="friend-card">
+                        <img src="logo_amigo3.png" alt="Juego Compañero 3" class="friend-img" onerror="this.style.display='none'; this.parentNode.innerHTML+='<div style=\"color:var(--cyan-neon); font-size:0.75rem; margin-bottom:0.5rem;\">&lt;Logo Juego 3&gt;</div>'">
+                        <span class="friend-name">JUEGO 3</span>
+                    </a>
+
+                </div>
+            </div>
 
             <a href="https://terrabusiagustina-bit.github.io/Out-of-the-Bounds/" class="btn-volver">VOLVER AL INICIO</a>
         </div>
@@ -282,14 +340,11 @@
         const columns = canvas.width / fontSize;
         const drops = [];
 
-        for(let x = 0; x < columns; x++) {
-            drops[x] = 1;
-        }
+        for(let x = 0; x < columns; x++) { drops[x] = 1; }
 
         function drawMatrix() {
             ctx.fillStyle = 'rgba(18, 12, 36, 0.1)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-
             ctx.fillStyle = '#00f0ff';
             ctx.font = fontSize + 'px "Share Tech Mono"';
 
@@ -297,13 +352,10 @@
                 const text = chars[Math.floor(Math.random() * chars.length)];
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) { drops[i] = 0; }
                 drops[i]++;
             }
         }
-
         setInterval(drawMatrix, 50);
     </script>
 
