@@ -117,7 +117,7 @@
             font-size: 2.5rem;
             color: var(--cyan-neon);
             text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             letter-spacing: 2px;
             animation: glitch-text 3s infinite;
         }
@@ -136,7 +136,7 @@
             background: var(--bg-panel);
             border: 2px solid var(--purple-light);
             border-top: 4px solid var(--pink-neon);
-            padding: 2rem 1.5rem;
+            padding: 2.5rem 1.5rem;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.7);
             backdrop-filter: blur(5px);
@@ -144,51 +144,36 @@
         }
 
         .highlight-text {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             color: #fff;
-            margin-bottom: 1rem;
+            margin-bottom: 2.5rem;
         }
 
-        /* CHISTE CORTITO */
-        .glitch-joke-box {
-            background: rgba(255, 0, 127, 0.08);
-            border: 1px dashed var(--pink-neon);
-            padding: 0.8rem;
-            border-radius: 4px;
-            margin: 1rem 0 2rem 0;
-        }
-
-        .glitch-joke-box p {
-            font-size: 1rem;
-            color: var(--text-light);
-            font-style: italic;
-        }
-
-        /* SECCIÓN VOTA COMPAÑEROS */
+        /* SECCION VOTA COMPAÑEROS */
         .friends-section {
             border-top: 1px dashed rgba(94, 70, 156, 0.6);
-            padding-top: 1.5rem;
+            padding-top: 2rem;
             margin-bottom: 2.5rem;
             text-align: center;
         }
 
         .friends-title {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--pink-neon);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
             letter-spacing: 1.5px;
         }
 
         .friends-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.2rem;
         }
 
         .friend-card {
             background: rgba(18, 12, 36, 0.7);
             border: 1px solid var(--purple-light);
-            padding: 1rem 0.5rem;
+            padding: 1.2rem 0.8rem;
             border-radius: 6px;
             text-decoration: none;
             display: flex;
@@ -196,6 +181,7 @@
             align-items: center;
             justify-content: center;
             transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            height: 140px;
         }
 
         .friend-card:hover {
@@ -206,27 +192,28 @@
 
         .friend-img {
             width: 100%;
-            height: 70px;
+            height: 75px;
             object-fit: contain;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             transition: filter 0.3s ease;
         }
 
         .friend-card:hover .friend-img {
-            filter: drop-shadow(0 0 5px var(--cyan-neon));
+            filter: drop-shadow(0 0 8px var(--cyan-neon));
         }
 
         .friend-name {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-light);
             font-weight: bold;
             font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
         }
 
         /* BOTON VOLVER */
         .btn-volver {
             display: inline-block;
-            padding: 0.8rem 2rem;
+            padding: 0.8rem 2.5rem;
             font-size: 1.1rem;
             font-weight: 700;
             color: #fff;
@@ -237,6 +224,7 @@
             cursor: pointer;
             box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
             transition: all 0.3s ease;
+            margin-top: 1rem;
         }
 
         .btn-volver:hover {
@@ -268,6 +256,8 @@
         @media (max-width: 768px) {
             .thank-you-title { font-size: 1.8rem; }
             .content-box { padding: 1.5rem 1rem; }
+            .friends-grid { grid-template-columns: 1fr; }
+            .friend-card { height: 120px; }
         }
     </style>
 </head>
@@ -289,27 +279,23 @@
                 Tu respuesta desestabilizó el entorno. Gracias a vos, <span style="color: var(--cyan-neon); font-weight: bold;">estoy más cerca de desarrollar mi videojuego</span>.
             </p>
 
-            <div class="glitch-joke-box">
-                <p>"[ERROR_404]: Tu voto rompió el bucle. El Glitch se comió el parche de seguridad."</p>
-            </div>
-
             <div class="friends-section">
-                <h2 class="friends-title">[ APOYA OTROS SISTEMAS ALIADOS ]</h2>
+                <h2 class="friends-title">Visita los proyectos de mis compañeros</h2>
                 <div class="friends-grid">
                     
                     <a href="#LINK_AMIGO_1" target="_blank" class="friend-card">
-                        <img src="logo_amigo1.png" alt="Juego Compañero 1" class="friend-img" onerror="this.style.display='none'; this.parentNode.innerHTML+='<div style=\"color:var(--cyan-neon); font-size:0.75rem; margin-bottom:0.5rem;\">&lt;Logo Juego 1&gt;</div>'">
-                        <span class="friend-name">JUEGO 1</span>
+                        <img src="Patocalipsis.png" alt="Patocalipsis" class="friend-img">
+                        <span class="friend-name">PATOCALIPSIS</span>
                     </a>
 
                     <a href="#LINK_AMIGO_2" target="_blank" class="friend-card">
-                        <img src="logo_amigo2.png" alt="Juego Compañero 2" class="friend-img" onerror="this.style.display='none'; this.parentNode.innerHTML+='<div style=\"color:var(--cyan-neon); font-size:0.75rem; margin-bottom:0.5rem;\">&lt;Logo Juego 2&gt;</div>'">
-                        <span class="friend-name">JUEGO 2</span>
+                        <img src="logo-TSAB.png" alt="To Space and Back" class="friend-img">
+                        <span class="friend-name">TO SPACE AND BACK</span>
                     </a>
 
                     <a href="#LINK_AMIGO_3" target="_blank" class="friend-card">
-                        <img src="logo_amigo3.png" alt="Juego Compañero 3" class="friend-img" onerror="this.style.display='none'; this.parentNode.innerHTML+='<div style=\"color:var(--cyan-neon); font-size:0.75rem; margin-bottom:0.5rem;\">&lt;Logo Juego 3&gt;</div>'">
-                        <span class="friend-name">JUEGO 3</span>
+                        <img src="Intrusión.png" alt="Intrusión" class="friend-img">
+                        <span class="friend-name">INTRUSIÓN</span>
                     </a>
 
                 </div>
