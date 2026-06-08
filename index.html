@@ -1,3 +1,6 @@
+Aquí tienes el código actualizado con los dos logos integrados en la sección de proyectos de compañeros.
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -74,4 +77,312 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background:
+            background: 
+                linear-gradient(transparent 0%, rgba(0, 240, 255, 0.05) 2%, transparent 3%),
+                linear-gradient(transparent 0%, rgba(255, 0, 127, 0.05) 2%, transparent 3%);
+            background-size: 100% 150px;
+        }
+
+        .glitch-bg::before { animation: bg-glitch-anim 4s infinite linear; }
+        .glitch-bg::after { animation: bg-glitch-anim 6s infinite reverse; opacity: 0.7; }
+
+        @keyframes bg-glitch-anim {
+            0% { transform: translateY(0); opacity: 0.5; }
+            50% { transform: translateY(100px); opacity: 0.8; }
+            100% { transform: translateY(150px); opacity: 0.5; }
+        }
+
+        h1, h2, h3, .btn {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        /* LOGO */
+        .main-logo {
+            max-width: 180px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.4));
+        }
+
+        /* AGRADECIMIENTO TITULO */
+        .thank-you-title {
+            font-size: 2.5rem;
+            color: var(--cyan-neon);
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            animation: glitch-text 3s infinite;
+        }
+
+        @keyframes glitch-text {
+            0% { text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); }
+            49% { text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); transform: skew(0deg); }
+            50% { text-shadow: -3px 0 var(--pink-neon), 3px 0 var(--cyan-neon); transform: skew(4deg); }
+            52% { text-shadow: 3px 0 var(--pink-neon), -3px 0 var(--cyan-neon); transform: skew(-4deg); }
+            55% { text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); transform: skew(0deg); }
+            100% { text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); }
+        }
+
+        /* PANEL CENTRAL */
+        .content-box {
+            background: var(--bg-panel);
+            border: 2px solid var(--purple-light);
+            border-top: 4px solid var(--pink-neon);
+            padding: 2.5rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            margin-bottom: 2rem;
+        }
+
+        .highlight-text {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 2.5rem;
+        }
+
+        /* SECCION VOTA COMPAÑEROS */
+        .friends-section {
+            border-top: 1px dashed rgba(94, 70, 156, 0.6);
+            padding-top: 2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .friends-title {
+            font-size: 1.2rem;
+            color: var(--pink-neon);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1.5px;
+        }
+
+        .friends-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .friend-card {
+            background: rgba(18, 12, 36, 0.7);
+            border: 1px solid var(--purple-light);
+            padding: 1.2rem 0.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            height: 140px;
+        }
+
+        .friend-card:hover {
+            transform: scale(1.05);
+            border-color: var(--cyan-neon);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+
+        .friend-img {
+            width: 100%;
+            height: 75px;
+            object-fit: contain;
+            margin-bottom: 0.8rem;
+            transition: filter 0.3s ease;
+        }
+
+        .friend-card:hover .friend-img {
+            filter: drop-shadow(0 0 8px var(--cyan-neon));
+        }
+
+        .friend-name {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        /* BOTON VOLVER */
+        .btn-volver {
+            display: inline-block;
+            padding: 0.8rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            background: transparent;
+            border: 2px solid var(--cyan-neon);
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn-volver:hover {
+            background: var(--cyan-neon);
+            color: var(--bg-dark);
+            box-shadow: 0 0 25px var(--cyan-neon);
+            transform: translateY(-2px);
+            border-color: var(--cyan-neon);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(10, 6, 20, 0.95);
+            border-top: 1px solid var(--purple-light);
+            width: 100%;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--cyan-neon);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-shadow: 0 0 5px var(--cyan-neon);
+        }
+
+        @media (max-width: 768px) {
+            .thank-you-title { font-size: 1.8rem; }
+            .content-box { padding: 1.5rem 1rem; }
+            .friends-grid { grid-template-columns: 1fr; }
+            .friend-card { height: 120px; }
+        }
+    </style>
+    <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '971557049194993');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=971557049194993&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+    <canvas id="code-matrix"></canvas>
+
+    <div class="glitch-bg"></div>
+    <div class="scanlines"></div>
+
+    <div class="container">
+        
+        <img src="logofinal.png" alt="Out of the Bounds Logo" class="main-logo">
+
+        <div class="content-box">
+            <h1 class="thank-you-title">¡MUCHAS GRACIAS POR VOTAR!</h1>
+            
+            <p class="highlight-text">
+                Tu respuesta desestabilizó el entorno. Gracias a vos, <span style="color: var(--cyan-neon); font-weight: bold;">estoy más cerca de desarrollar mi videojuego</span>.
+            </p>
+
+            <div class="friends-section">
+                <h2 class="friends-title">Visita los proyectos de mis compañeros</h2>
+                <div class="friends-grid">
+                    
+                    <a href="#LINK_AMIGO_1" target="_blank" class="friend-card">
+                        <img src="Patocalipsis.png" alt="Patocalipsis" class="friend-img">
+                        <span class="friend-name">PATOCALIPSIS</span>
+                    </a>
+
+                    <a href="#LINK_AMIGO_2" target="_blank" class="friend-card">
+                        <img src="logo-TSAB.png" alt="To Space and Back" class="friend-img">
+                        <span class="friend-name">TO SPACE AND BACK</span>
+                    </a>
+
+                    <a href="#LINK_AMIGO_3" target="_blank" class="friend-card">
+                        <img src="Intrusión.png" alt="Intrusión" class="friend-img">
+                        <span class="friend-name">INTRUSIÓN</span>
+                    </a>
+
+                    <!-- Nuevo Logo: Sweet Escape -->
+                    <a href="#LINK_SWEET_ESCAPE" target="_blank" class="friend-card">
+                        <img src="LogoSweetEscape.jpg" alt="Sweet Escape" class="friend-img">
+                        <span class="friend-name">SWEET ESCAPE</span>
+                    </a>
+
+                    <!-- Nuevo Logo: Glitch Alley -->
+                    <a href="#LINK_GLITCH_ALLEY" target="_blank" class="friend-card">
+                        <img src="logo GA.jpg" alt="Glitch Alley" class="friend-img">
+                        <span class="friend-name">GLITCH ALLEY</span>
+                    </a>
+
+                </div>
+            </div>
+
+            <a href="https://terrabusiagustina-bit.github.io/Out-of-the-Bounds/" class="btn-volver">VOLVER AL INICIO</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Out of the Bounds © 2026 | Desarrollado por <a href="https://terrabusiagustina-bit.github.io/Portfolio/" target="_blank">Agustina Terrabusi</a></p>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('code-matrix');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const chars = '010101110010A B C D E F'.split('');
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for(let x = 0; x < columns; x++) { drops[x] = 1; }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(18, 12, 36, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#00f0ff';
+            ctx.font = fontSize + 'px "Share Tech Mono"';
+
+            for(let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) { drops[i] = 0; }
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 50);
+    </script>
+
+</body>
+</html>
+
+```
